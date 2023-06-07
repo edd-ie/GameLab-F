@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 import './Home.css';
 import icon from '../assets/blossom-bg.png'
 import Logout from './Logout';
+import { useAuth0 } from '@auth0/auth0-react';
 
 export default function Home() {
-
-  
-
+  const{user, isAuthenticated} = useAuth0()
 
   return (
     <>
@@ -25,7 +24,7 @@ export default function Home() {
 
         <div className='homeContent'>
           <div className='homeText'>
-            <h1>Hi Name...</h1>
+            <h1>Hi {user.nickname}...</h1>
           </div>
           <div className='homeGames'>
             <Link to="/flappy">
