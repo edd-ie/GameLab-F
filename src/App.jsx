@@ -47,7 +47,7 @@ function App() {
           <Logout/>
         </>
       )}
-      
+      {isAuthenticated && <RouterProvider router={router} />}
     </main>
   )
 }
