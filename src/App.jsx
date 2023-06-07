@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react'
 import './App.css'
-import FlappyBird from './components/Flappy'
-import Game2048 from './components/g2048'
+import FlappyBird from './components/Flappy.jsx'
+import Game2048 from './components/g2048.jsx'
 import Login from './components/Login'
 import {createBrowserRouter,RouterProvider} from "react-router-dom";
-import Logout from './components/Logout'
-import Home from './components/Home'
-import Profile from './components/Profile'
+import Logout from './components/Logout.jsx'
+import Home from './components/Home.jsx'
+import Profile from './components/Profile.jsx'
 import { useAuth0 } from '@auth0/auth0-react';
-import LeaderBoard from './components/LeaderBoard';
+import LeaderBoard from './components/LeaderBoard.jsx';
 
 
 function App() {
