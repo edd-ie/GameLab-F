@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import './Flappy.css'
+import { Link } from "react-router-dom";
 
 
 export default function FlappyBird() {
@@ -92,6 +93,9 @@ export default function FlappyBird() {
 
   return (
     <>
+      <Link to="/">
+          <h2 id='homeIcon'>Game <span>Lab</span> </h2>
+      </Link>
       <div id='game'>
         <div id='gameBox' style={{width: game_width, height: game_height}} onClick={handleJump}>
           

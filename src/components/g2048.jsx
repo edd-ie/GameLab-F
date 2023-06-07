@@ -6,6 +6,7 @@ import Cell from './Cell'
 import { Board } from './helper'
 import useEvent from './numLogic/useEvent';
 import GameState from './numLogic/GameHUD'
+import { Link } from "react-router-dom";
 
 
 export default function Game2048() {
@@ -52,6 +53,9 @@ export default function Game2048() {
 
     return(
         <div>
+            <Link to="/">
+                <h2 id='homeIcon'>Game <span>Lab</span> </h2>
+            </Link>
             <div className='details-box'>
                 <div className='resetButton' onClick={resetGame}>Reset</div>
                 <div className='score-box'>

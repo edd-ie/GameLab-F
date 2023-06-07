@@ -28,11 +28,17 @@
 }
 
 .lHeader{
-    background: orange;
+    /* background: orange; */
     width: 100%;
     height: 25%;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
+    
+    background: black;
+        color: antiquewhite;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/wall.png');
+        background-repeat: no-repeat;
+        background-size: cover;
 }
 
 .lTitle{
@@ -79,6 +85,7 @@
 
 .lNav div:last-child {
     border: 1px solid black;
+    background: rgba(17, 105, 29, 0.781);
     margin-left: 1%;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
@@ -100,4 +107,18 @@
     width: 100%;
     height: 10%;
     border-radius: 15px;
+}
+
+#homeIcon {
+    position: absolute;
+    left: 2%;
+    bottom: 88%;
+    padding: 0;
+    color: black;
+}
+
+#homeIcon span {
+    margin-top: 2px;
+    color: #ea1538;
+    padding: 0;
 }

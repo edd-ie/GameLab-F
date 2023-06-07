@@ -240,3 +240,18 @@ body {
 .overlay .message {
   color: #666;
 }
+
+
+#homeIcon {
+  position: absolute;
+  left: 2%;
+  bottom: 88%;
+  padding: 0;
+  color: black;
+}
+
+#homeIcon span {
+  margin-top: 2px;
+  color: #ea1538;
+  padding: 0;
+}
