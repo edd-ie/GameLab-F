@@ -3,7 +3,7 @@ import './leaderBoard.css'
 import falcon from '../assets/falcon-bg.png'
 import hawk from '../assets/hawk-bg.png'
 
-export default function FlappyBoard() {
+export default function LeaderBoard() {
 
   
   return (
