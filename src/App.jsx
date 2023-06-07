@@ -11,6 +11,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import LeaderBoard from './components/LeaderBoard.jsx';
 
 
+
 function App() {
   const{isLoading, error} = useAuth0();
   const{isAuthenticated} = useAuth0()
