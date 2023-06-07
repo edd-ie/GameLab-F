@@ -1,0 +1,8 @@
+Save scores in a array:
+Every 5 games/Exit/Change route --> search the array for maximum then push maximum to DB
+Clear array and restart the process
+
+
+IN DB: 
+Check if new value is larger than current if not dont update
+else update

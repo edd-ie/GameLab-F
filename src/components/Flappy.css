@@ -1,0 +1,22 @@
+.bird {
+    position: relative;
+    background: url("../assets/bird.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#gameBox {
+    overflow: hidden;
+    background: url('../assets/city.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 15px;
+}
+
+#game {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
