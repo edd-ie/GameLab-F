@@ -8,7 +8,7 @@ import Logout from './components/Logout'
 import Home from './components/Home'
 import Profile from './components/Profile'
 import { useAuth0 } from '@auth0/auth0-react';
-
+import FlappyBoard from './components/LeaderBoard';
 
 
 function App() {
@@ -32,6 +32,10 @@ function App() {
       {
         path: "/profile",
         element: <Profile/>,
+      },
+      {
+        path: "/fBoard",
+        element: <FlappyBoard/>,
       }
     ]
   );
