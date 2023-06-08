@@ -41,7 +41,7 @@ export default function Game2048() {
         body:JSON.stringify(data)
         })
     }
-  
+
 
     function fetchHighScore(){
         fetch(`http://127.0.0.1:9292/rank_num/${player_id}`)
@@ -52,14 +52,35 @@ export default function Game2048() {
         })
     }
 
+    const [moved, setMoved] = useState(0)
+    console.log("file: g2048.jsx:56 -> Game2048 -> moved:", moved);
+
+    function postScore(data) {
+        fetch(`http://127.0.0.1:9292/num_board/${player_id}`,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(data)
+        })
+    }    
 
 
     function handleKeyDown(e) {
         console.log(e.keyCode);
+        if(board.hasLost()){
+            //'/num_board/:id'
+            let mov = moved
+            let val = {score: board.score, user_id: player_id, moves: mov}
+            postScore(val)            
+            return;
+        }
         if (board.hasWon()) {
+            let mov = moved
+            let val = {score: board.score, user_id: player_id, moves: mov}
+            postScore(val) 
             return;
         }
         if (e.keyCode >= 37 && e.keyCode <= 40) {
+            setMoved(moved+1)
             let direction = e.keyCode - 37;
             let boardClone = Object.assign(
                 Object.create(Object.getPrototypeOf(board)),
@@ -90,6 +111,7 @@ export default function Game2048() {
     )
 
     function resetGame() {
+        setMoved(0)
         setBoard(new Board())
     }    
 
@@ -112,7 +134,7 @@ export default function Game2048() {
             </div>
             <div id='highScore'>
                 <h1>High Score:</h1>
-                <h3>22222222</h3>
+                <h3>{highScore}</h3>
                 <p>Click to play</p>
             </div>
         </div>

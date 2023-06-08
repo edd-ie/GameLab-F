@@ -62,7 +62,7 @@ export default function LeaderBoard() {
         <div className="rank-rank" key={`lead_ranks${index}`}>{pos++}</div>
         <div className="rank-name" key={`lead_names${index}`}>{rank.name || rank.user}</div>
         <div className="rank-score" key={`lead_scores${index}`}>{`Score: ${rank.score}`}</div>
-        {(rank.hasOwnProperty("time"))&&<div className="rank-time" key={`lead_times${index}`}>{`Time: ${rank.time}`}</div>}
+        {(rank.hasOwnProperty("moves"))&&<div className="rank-time" key={`lead_moves${index}`}>{`Moves: ${rank.moves}`}</div>}
       </div>
     )
   })
