@@ -62,19 +62,29 @@
 
 #gameIcon1{
     height: 50%;
-    width: 200px;
-    background: white;
+    width: 250px;
+    background: black;
     border: 1px solid black;
     padding: 0;
     border-radius: 15px;
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-image: url('../assets/bird2.png')
 }
 #gameIcon2{
     height: 50%;
-    width: 200px;
-    background: white;
+    width: 250px;
+    background-color: black;
     border: 1px solid black;
     padding: 0;
     border-radius: 15px;
+    background-image: url('../assets/g2048.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#gameIcon2:hover, #gameIcon1:hover{
+    box-shadow: 2px 2px 15px 2px limegreen;
 }
 
 .homeText{

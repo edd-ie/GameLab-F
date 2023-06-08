@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react';
+import { Link } from "react-router-dom";
 
 
 export default function Profile() {
@@ -24,6 +25,9 @@ export default function Profile() {
     return (
         isAuthenticated && (
             <div>
+                <Link to="/">
+                    <h2 id='homeIcon'>Game <span>Lab</span> </h2>
+                </Link>
                 <h1>Welcome {user.name}</h1>
                 <p>Your email is {user.email}</p>
                 {JSON.stringify(user)}

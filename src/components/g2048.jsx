@@ -15,6 +15,8 @@ export default function Game2048() {
     const{user} = useAuth0()
     const [player_id, setPlayer_id] = useState(0)
     const [highScore, setHighScore] = useState(0)
+    const [userStats, setUserStats] = useState({})
+    console.log("file: g2048.jsx:19 -> Game2048 -> userStats:", userStats);
 
     const userData = {
         name: user.nickname,
@@ -31,6 +33,13 @@ export default function Game2048() {
             .then(data => {setPlayer_id(data.id)})
             .catch(err => console.log(err))
         },[])
+
+    useEffect(() => {
+        fetch(`http://127.0.0.1:9292/rank_num/${player_id}`)
+       .then(res => res.json())
+       .then(data => {setUserStats(data)})
+       .catch(err => console.log(err))
+    },[])
 
 
     function postScore(data){
@@ -134,10 +143,9 @@ export default function Game2048() {
             </div>
             <div id='highScore'>
                 <h1>High Score:</h1>
-                <h3>{highScore}</h3>
-                <p>Click to play</p>
+                <h3>Score: {userStats.score} | Moves: {userStats.moves}</h3>
+                <p>Use arrow keys to move tiles</p>
             </div>
         </div>
     )
 }
-
