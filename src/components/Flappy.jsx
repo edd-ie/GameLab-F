@@ -1,9 +1,31 @@
 import React, { useState, useEffect, useRef } from 'react'
 import './Flappy.css'
 import { Link } from "react-router-dom";
+import { useAuth0 } from '@auth0/auth0-react';
 
 
 export default function FlappyBird() {
+  const{user} = useAuth0()
+  const [player_id, setPlayer_id] = useState(0)
+
+  const userData = {
+    name: user.nickname,
+    email: user.email
+  }
+
+  useEffect(() => {
+        fetch('http://127.0.0.1:9292/user',{
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify(userData)
+        })
+        .then(res => res.json())
+        .then(data => {setPlayer_id(data.id)})
+        .catch(err => console.log(err))
+    },[])
+
+
+
     const game_width = 800;
   const game_height = 500;
   const birdSize = 50;
@@ -23,6 +45,27 @@ export default function FlappyBird() {
   const[pipeLeft, setPipeLeft] = useState(game_width - pipeWidth)
   const bottomPipeHeight = game_height - gap-pipeHeight
   const pipeTop = game_height-(bottomPipeHeight+pipeHeight)
+  const [highScore, setHighScore] = useState(0)
+  console.log("file: Flappy.jsx:27 -> FlappyBird -> highScore:", highScore);
+
+  function postScore(data){
+    console.log("file: Flappy.jsx:52 -> postScore -> data:", data, player_id);
+    fetch(`http://127.0.0.1:9292/flappy_board/${player_id}`,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(data)
+    })
+  }
+  
+
+  function fetchHighScore(){
+    fetch(`http://127.0.0.1:9292/rank_flappy/${player_id}`)
+    .then(res => res.json())
+    .then(data => {
+      console.log("file: Flappy.jsx:68 -> fetchHighScore -> data:", data);
+      setHighScore(data.score)
+    })
+  }
   
   useEffect(() =>{
     let timeId;
@@ -64,9 +107,12 @@ export default function FlappyBird() {
       (collideTop || collideBottom)
     ){
       board = score
+      let sendData = {"user_id": player_id, "score": board}
+      postScore(sendData)
       setGameStart(false)
       setPosition(200)
-      console.log("file: App.jsx:68 -> useEffect -> board:", board);
+      console.log("file: App.jsx:68 -> useEffect -> board score:", board);
+      fetchHighScore()
     }
     else if(score%10 == 0 && score !== 0){
       setVelocity(velocity+0.1)
@@ -80,6 +126,7 @@ export default function FlappyBird() {
 
     if(!gameStart){
       setGameStart(true)
+      
     }
     else if(newPos < 0){
       setPosition(0)
@@ -88,6 +135,7 @@ export default function FlappyBird() {
       setPosition(newPos)
     }
   }
+  
   
   
 
@@ -117,6 +165,11 @@ export default function FlappyBird() {
 
           <div className='score'><h1>{score}</h1></div>
         </div>
+      </div>
+      <div id='highScore'>
+          <h1>High Score:</h1>
+          <h3>{highScore}</h3>
+          <p>Click to play</p>
       </div>
     </>
   )

@@ -15,12 +15,18 @@ import LeaderBoard from './components/LeaderBoard.jsx';
 function App() {
   const{isLoading, error} = useAuth0();
   const{isAuthenticated} = useAuth0()
+  const [idData, setIdData] = useState(null);
+  console.log("file: App.jsx:19 -> App -> idData:", idData);
+  
+
+  
+
   
   const router = createBrowserRouter([
       
       {
         path: "/",
-        element:<Home/>
+        element:<Home setIdData={setIdData}/>
       },
       {
         path: "/flappy",

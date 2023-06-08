@@ -1,12 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import './Home.css';
 import icon from '../assets/blossom-bg.png'
 import Logout from './Logout';
 import { useAuth0 } from '@auth0/auth0-react';
 
-export default function Home() {
-  const{user, isAuthenticated} = useAuth0()
+export default function Home({setIdData}) {
+  const{user} = useAuth0()
+  const [userId, setID] = useState(0)
+  console.log("file: Home.jsx:11 -> Home -> userId:", userId);
+
+  const userData = {
+    name: user.nickname,
+    email: user.email
+  }
+  
+
+    useEffect(() => {
+        fetch('http://127.0.0.1:9292/user',{
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify(userData)
+        })
+        .then(res => res.json())
+        .then(data => {setID(data.id); setIdData(data.id)})
+        .catch(err => console.log(err))
+    },[])
 
   return (
     <>
