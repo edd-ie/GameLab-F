@@ -22,7 +22,9 @@ export default function Profile() {
         .then(res => res.json())
         .then(data => console.log('User responser: ',data))
     },[])
-    
+    //JSON.stringify(user)
+    console.log('User : ',user)
+
     return (
         isAuthenticated && (
             <div>
@@ -30,10 +32,17 @@ export default function Profile() {
                     <h2 id='homeIcon'>Game <span>Lab</span> </h2>
                 </Link>
                 <div id='profile'>
-                    <div id='profileIcon'></div>
-                    <div id='profileInfo'></div>
+                    <div id='profileIcon'>
+                        <div id='profilePic'></div>
+                    </div>
+                    <div id='profileInfo'>
+                        <div id='profileName'><span>User name:</span> {user.nickname}</div>
+                        <div id='profileEmail'><span>Email: </span> {user.email}</div>
+                        <div id='profileEmail'><span>Verified:</span> {user.email_verified?'True':'False'}</div>
+                        <div id='profileEmail'><span>Joined:</span>  {user.updated_at.split(':')[0]}</div>
+                    </div>
                 </div>
-                <form action="submit">
+                <form action="submit" id='profileForm'>
                     <input type="text" name="name" placeholder="Change UserName" required />
                     <button type="submit" name="Change">Change</button>
                 </form>
