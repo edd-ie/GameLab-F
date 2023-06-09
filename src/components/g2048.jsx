@@ -30,16 +30,16 @@ export default function Game2048() {
                 body:JSON.stringify(userData)
             })
             .then(res => res.json())
-            .then(data => {setPlayer_id(data.id)})
+            .then(data => {setPlayer_id(data.id);
+                console.log("file: g2048.jsx:42 -> useEffect -> data:", data);
+                fetch(`http://127.0.0.1:9292/rank_num/${data.id}`)
+                .then(res => res.json())
+                .then(data => {setUserStats(data)})
+                .catch(err => console.log(err))
+            
+            })
             .catch(err => console.log(err))
         },[])
-
-    useEffect(() => {
-        fetch(`http://127.0.0.1:9292/rank_num/${player_id}`)
-       .then(res => res.json())
-       .then(data => {setUserStats(data)})
-       .catch(err => console.log(err))
-    },[])
 
 
     function postScore(data){
