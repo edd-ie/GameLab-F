@@ -8,6 +8,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 export default function Home({setIdData}) {
   const{user} = useAuth0()
   const [userId, setID] = useState(0)
+  const [name, setName] = useState('')
   console.log("file: Home.jsx:11 -> Home -> userId:", userId);
 
   const userData = {
@@ -23,7 +24,7 @@ export default function Home({setIdData}) {
             body:JSON.stringify(userData)
         })
         .then(res => res.json())
-        .then(data => {setID(data.id); setIdData(data.id)})
+        .then(data => {setID(data.id); setIdData(data.id); setName(data.name)})
         .catch(err => console.log(err))
     },[])
 
@@ -43,7 +44,7 @@ export default function Home({setIdData}) {
 
         <div className='homeContent'>
           <div className='homeText'>
-            <h1>Hi {user.nickname}...</h1>
+            <h1>Hi {name}...</h1>
           </div>
           <div className='homeGames'>
             <Link to="/flappy">

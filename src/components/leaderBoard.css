@@ -113,13 +113,13 @@
     width: 98%;
     color: white;
     display: flex;
-    border: 1px solid #aaa;
+    border: 1px solid #aaaaaaab;
     height: 10%;
     border-radius: 10px;
     justify-content: space-between;
     padding-left: 5px;
     padding-right: 5px;
-    margin-top: 5px;
+    margin-top: 2px;
 }
 
 .rankLeads > * {

@@ -13,7 +13,7 @@
 #profileIcon{
     position: relative;
     width: 100%;
-    background: ghostwhite;
+    background: rgba(125, 252, 6, 0.096);
     height: 30%;
     border-top-left-radius: 18px;
     border-top-right-radius: 18px;
@@ -51,7 +51,46 @@
     position: absolute;
     top: 80%;
     left: 40%;
-    border: 1px solid white;
     height: 5%;
     width: 20%;
+    display: flex;
+}
+
+#profileForm>*{
+    position: relative;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+#profInput{
+    position: relative;
+    height: 100%;
+    margin: 0;
+    width: 85%;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    text-align: center;
+}
+
+#profButton{
+    position: relative;
+    height: 100%;
+    border: none;
+    margin-top: 1px;
+    width: 15%;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-image: url('../assets/save.png');
+    background-repeat: no-repeat;
+    background-size:50%;
+    background-position: center;
+}
+
+#profPic{
+    position: relative;
+    margin-top: 2%;
+    border: 3px solid white;
+    border-radius: 30%;
 }
