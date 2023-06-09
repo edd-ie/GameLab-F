@@ -61,6 +61,13 @@ export default function Game2048() {
         })
     }
 
+    function handleScoreReset(){
+        fetch(`http://127.0.0.1:9292/reset_num/${player_id}`,{
+        method:'DELETE'
+        })
+        setUserStats({score:0, moves:0})
+    }
+
     const [moved, setMoved] = useState(0)
     console.log("file: g2048.jsx:56 -> Game2048 -> moved:", moved);
 
@@ -145,6 +152,10 @@ export default function Game2048() {
                 <h1>High Score:</h1>
                 <h3>Score: {userStats.score} | Moves: {userStats.moves}</h3>
                 <p>Use arrow keys to move tiles</p>
+            </div>
+
+            <div id='scoreReset' onClick={handleScoreReset}>
+                Reset <br /> High Score
             </div>
         </div>
     )

@@ -46,7 +46,14 @@ export default function FlappyBird() {
   const bottomPipeHeight = game_height - gap-pipeHeight
   const pipeTop = game_height-(bottomPipeHeight+pipeHeight)
   const [highScore, setHighScore] = useState(0)
-  console.log("file: Flappy.jsx:27 -> FlappyBird -> highScore:", highScore);
+
+  function handleScoreReset(){
+    fetch(`http://127.0.0.1:9292/reset_flappy/${player_id}`,{
+      method:'DELETE'
+    })
+    setHighScore(0)
+  }
+
 
   function postScore(data){
     console.log("file: Flappy.jsx:52 -> postScore -> data:", data, player_id);
@@ -170,6 +177,10 @@ export default function FlappyBird() {
           <h1>High Score:</h1>
           <h3>{highScore}</h3>
           <p>Click to play</p>
+      </div>
+
+      <div id='scoreReset' onClick={handleScoreReset}>
+        Reset <br /> High Score
       </div>
     </>
   )
