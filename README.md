@@ -14,6 +14,7 @@ An interactive web game app that provides engaging games to help you relax
 ## <a id="started">Getting started</a>
 
 Website : [GameLab](https://game-lab-red.vercel.app/)
+
 Backend: [repository](https://github.com/edd-ie/GameLab-B)
 
 **Clone** the project files to your local repository:
